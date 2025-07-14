@@ -115,9 +115,30 @@ export const Dashboard: React.FC = () => {
         <Box sx={{ mb: 4 }}>
           <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
             <Typography variant="h5" component="h2">Children</Typography>
-            <Typography variant="body1" color="text.secondary">
-              {children.length} {children.length === 1 ? 'Child' : 'Children'}
-            </Typography>
+            <Box display="flex" alignItems="center" gap={2}>
+              {children.length > 0 && (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  startIcon={<AddIcon />}
+                  onClick={() => setIsAddDialogOpen(true)}
+                  sx={{
+                    textTransform: 'none',
+                    borderRadius: 2,
+                    boxShadow: 1,
+                    '&:hover': {
+                      boxShadow: 2
+                    }
+                  }}
+                >
+                  Add Child
+                </Button>
+              )}
+              <Typography variant="body1" color="text.secondary">
+                {children.length} {children.length === 1 ? 'Child' : 'Children'}
+              </Typography>
+            </Box>
           </Box>
 
           {children.length === 0 ? (
